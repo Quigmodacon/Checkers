@@ -40,6 +40,20 @@ board::board(int size = 8) {
 //
 // </PARAMETERS>
 void board::randomizeTurnStart() {
+	srand();
+	int randNum = rand() % 2;
+	switch(randNum) {
+	case 0: turn = 'o'; break;
+	case 1: turn = 'x'; break;
+	}
+}
+// </FUNCTION>
+//
+// <FUNCTION = printBoard>
+// <PARAMETERS>
+//
+// </PARAMETERS>
+void board::printBoard() {
 	
 }
 // </FUNCTION>
