@@ -11,6 +11,7 @@
 class board {
 public:
 	board(int size);
+	void randomizeTurnStart(); // randomizes which side starts
 	void printBoard(); // prints board
 	void movePiece(); // moves a piece
 
@@ -26,7 +27,6 @@ private:
 	int boardSize; // Not including boarders
 	piece* selectedPi;
 	square* selectedSq
-	std::vector<square>;
 	std::vector<piece>;
 };
 
