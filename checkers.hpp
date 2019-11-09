@@ -34,19 +34,25 @@ class square {
 public:
 	square(char color, int x, int y);
 	void occupation(bool status, char team);
+	bool occupied() {return occupied;}
+	char color() {return color;}
 	piece occupier();
+	bool occupierKinged() {return onSquare -> isKinged();}
+	*piece occupier() {return onSquare;}
 
 private:
+	piece* onSquare;
 	char color;
 	bool occupied;
-	piece* onSquare
 	int x, y;
 };
 
 class piece {
 public:
 	piece(char team, int x, int y)
-	void kinged();
+	void king();
+	bool isKinged() {return kinged;}
+	char team() {return team;}
 	void move(int x, int y);
 
 private:

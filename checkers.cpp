@@ -54,6 +54,40 @@ void board::randomizeTurnStart() {
 //
 // </PARAMETERS>
 void board::printBoard() {
-	
+	isBorderRow = true;
+	isBorderCol = true;
+	int sizeRow = 0;
+	int sizeCol = 0;
+	for (int row = 0; row < boardSize*2+1; row++) {
+		for (int col = 0; col < boardSize*2+1; col++) {
+			if (isBorderRow) {
+				if (row % 2 == 0)
+					std::cout << '+';
+				else
+					std::cout << '-';
+				continue;
+			}
+			else if (isBorderCol) {
+				if (col % 2 == 0)
+					std::cout << '+';
+				else
+					std::cout << '-';
+				isBorderCol = false;
+				continue;
+			}
+			else {
+				if (!gameboard[sizeRow][sizeCol].occupied()) {
+					std::cout << gameBoard[sizeRow][sizeCol] -> color();
+				}
+				else {
+					std::cout << gameboard[sizeRow][sizeCol] -> occupier() -> team();
+				}
+				sizeCol++;
+			}
+			isBorderCol = true;
+		}
+		std::cout << '\n';
+		sizeRow++;
+	} 
 }
 // </FUNCTION>
