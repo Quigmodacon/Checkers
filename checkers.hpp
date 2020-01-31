@@ -16,8 +16,8 @@ public:
 	void movePiece(); // moves a piece
 
 private:
-	piece* selectPiece(); // used in movePiece(), selects piece to move
-	square* selectMoveTo(); // used in movePiece(), selects target square
+	void selectPiece(); // used in movePiece(), selects piece to move
+	void selectMoveTo(); // used in movePiece(), selects target square
 	bool check(); // checks if square is a valid move (diagonal, not occupied)
 	bool checkJump(); // checks if a jump is being made
 	void takePiece(); // if checkJump() remove piece from board
@@ -25,9 +25,10 @@ private:
 	std::vector< std::vector<square*> > gameboard;
 	char turn;
 	int boardSize; // Not including boarders
+	const int pieceCount = 24;
 	piece* selectedPi;
 	square* selectedSq
-	std::vector<piece>;
+	std::vector<piece*> pieces;
 };
 
 class square {
@@ -36,9 +37,8 @@ public:
 	void occupation(bool status, char team);
 	bool occupied() {return occupied;}
 	char color() {return color;}
-	piece occupier();
+	piece* occupier() {return onSquare;}
 	bool occupierKinged() {return onSquare -> isKinged();}
-	*piece occupier() {return onSquare;}
 
 private:
 	piece* onSquare;

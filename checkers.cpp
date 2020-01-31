@@ -32,6 +32,9 @@ board::board(int size = 8) {
 		else
 			isEven = true;
 	}
+	for (int i = 0; i < pieceCount; i++){
+		pieces.push_back(new piece(
+	}
 } 
 // </FUNCTION>
 //
@@ -89,5 +92,14 @@ void board::printBoard() {
 		std::cout << '\n';
 		sizeRow++;
 	} 
+}
+// </FUNCTION>
+//
+// <FUNCTION = movePieve>
+// <PARAMETERS>
+//
+// </PARAMETERS>
+void movePiece() {
+	
 }
 // </FUNCTION>
