@@ -27,7 +27,7 @@ private:
 	int boardSize; // Not including boarders
 	const int pieceCount = 24;
 	piece* selectedPi;
-	square* selectedSq
+	square* selectedSq;
 	std::vector<piece*> pieces;
 };
 
@@ -35,10 +35,10 @@ class square {
 public:
 	square(char color, int x, int y);
 	void occupation(bool status, char team);
-	bool occupied() {return occupied;}
-	char color() {return color;}
+	bool occupied() const {return occupied;}
+	char getColor() const {return color;}
 	piece* occupier() {return onSquare;}
-	bool occupierKinged() {return onSquare -> isKinged();}
+	bool occupierKinged() const {return onSquare -> isKinged();}
 
 private:
 	piece* onSquare;
@@ -49,10 +49,10 @@ private:
 
 class piece {
 public:
-	piece(char team, int x, int y)
+	piece(char team, int x, int y);
 	void king();
 	bool isKinged() {return kinged;}
-	char team() {return team;}
+	char getTeam() {return team;}
 	void move(int x, int y);
 
 private:

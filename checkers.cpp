@@ -16,7 +16,7 @@ board::board(int size = 8) {
 	boardSize = size;
 	bool isEven = true; // used to check every other tile for correct coloring
 	for (int col = 0; col < boardSize; col++) { // columns, or x coord
-		gameboard.push_back(vector<square*>); // pushs 1 vector for every col
+		gameboard.push_back(*(new std::vector<square*>)); // pushs 1 vector for every col
 		for (int row = 0; row < boardSize; col++) { // rows, or y coord
 			if (isEven) { // checking for tile color
 				gameboard[col].push_back(new square(' ', col, row)); // 'white' tile pushed back
@@ -24,6 +24,7 @@ board::board(int size = 8) {
 			}
 			else {
 				gameboard[col].push_back(new square('#', col, row)); // 'black' tile pushed
+	
 				isEven = true; // swap to next color
 			}
 		}
@@ -31,9 +32,6 @@ board::board(int size = 8) {
 			isEven = false;
 		else
 			isEven = true;
-	}
-	for (int i = 0; i < pieceCount; i++){
-		pieces.push_back(new piece(
 	}
 } 
 // </FUNCTION>
@@ -43,7 +41,7 @@ board::board(int size = 8) {
 //
 // </PARAMETERS>
 void board::randomizeTurnStart() {
-	srand();
+	srand(time(nullptr));
 	int randNum = rand() % 2;
 	switch(randNum) {
 	case 0: turn = 'o'; break;
@@ -57,8 +55,8 @@ void board::randomizeTurnStart() {
 //
 // </PARAMETERS>
 void board::printBoard() {
-	isBorderRow = true;
-	isBorderCol = true;
+	bool isBorderRow = true;
+	bool isBorderCol = true;
 	int sizeRow = 0;
 	int sizeCol = 0;
 	for (int row = 0; row < boardSize*2+1; row++) {
@@ -79,11 +77,11 @@ void board::printBoard() {
 				continue;
 			}
 			else {
-				if (!gameboard[sizeRow][sizeCol].occupied()) {
-					std::cout << gameBoard[sizeRow][sizeCol] -> color();
+				if (!gameboard[sizeRow][sizeCol] -> occupied()) {
+					std::cout << gameboard[sizeRow][sizeCol] -> getColor();
 				}
 				else {
-					std::cout << gameboard[sizeRow][sizeCol] -> occupier() -> team();
+					std::cout << gameboard[sizeRow][sizeCol] -> occupier() -> getTeam();
 				}
 				sizeCol++;
 			}
